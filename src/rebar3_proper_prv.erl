@@ -306,15 +306,15 @@ find_properties(State, Dir, Mods, Props) ->
              Prop <- properties(Props, module(File))].
 
 prop_suite(Mods, File) ->
-    Mod = filename:basename(File, ".erl"),
-    filename:extension(File) =:= ".erl"
+    Mod = filename:basename(File, ".gleam"),
+    filename:extension(File) =:= ".gleam"
     andalso
     ((Mods =:= any andalso lists:prefix("prop_", Mod))
      orelse
      (Mods =/= any andalso lists:member(Mod, Mods))).
 
 module(File) ->
-    list_to_atom(filename:basename(File, ".erl")).
+    list_to_atom(filename:basename(File, ".gleam")).
 
 mod_compiled(Mod, TestDir) ->
     try Mod:module_info() of
